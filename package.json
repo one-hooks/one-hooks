@@ -1,5 +1,5 @@
 {
-  "private": true,
+  "private": false,
   "name": "@one-hooks/one-hooks",
   "version": "0.1.0",
   "scripts": {
