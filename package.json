@@ -1,0 +1,62 @@
+{
+  "private": true,
+  "name": "@one-hooks/one-hooks",
+  "version": "0.0.0",
+  "scripts": {
+    "docs:start": "dumi dev",
+    "docs:build": "dumi build",
+    "build": "father-build",
+    "dev": "father-build --watch",
+    "release": "npm version patch -m 'chore(release): release %s'",
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "commit": "lint-staged && export HUSKY_SKIP_HOOKS=1 && git-cz",
+    "changelog": "conventional-changelog -p angular -i ./docs/change-log/index.md -s -r 0 && conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add .",
+    "version": "npm run changelog"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "typings": "dist/index.d.ts",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@one-style/commit": "^0.2.0",
+    "@one-style/eslint": "^0.2.0",
+    "@one-style/prettier": "^0.2.0",
+    "@testing-library/react-hooks": "^7.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/react": "^17.0.3",
+    "@umijs/test": "^3.0.5",
+    "dumi": "^1.0.13",
+    "father-build": "^1.17.2"
+  }
+}
