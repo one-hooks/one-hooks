@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@one-hooks/one-hooks",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "docs:start": "dumi dev",
     "docs:build": "dumi build",
